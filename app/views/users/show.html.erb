@@ -1,4 +1,26 @@
 <h2>ユーザー詳細画面</h2>
-  <p id="notice"><%= notice %></p>
-  <h2><%= @user.name %>のページ</h2>
-  <p>メールアドレス: <%= @user.email %></p>
+<p id="notice"><%= notice %></p>
+<h2><%= @user.name %>のページ</h2>
+<p>メールアドレス: <%= @user.email %></p>
+<% @user.blogs.each do |blog| %>
+<tr>
+  <td id="user_tr_color">タイトル:<%= blog.title %></td>
+  <br>
+  <td>投稿内容:<%= blog.content %></td>
+  <br>
+  <div id ="footer_top">
+    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+    <td><%= link_to "投稿を編集する", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to '投稿を削除する', blog_path(blog.id),data: { confirm: '本当に削除していいですか？' }, method: :delete %></td>
+  </div>
+</tr>
+<% end %>
+<br>
+<button type="button" class = "btn btn-default">
+  <%= link_to 'お気に入り一覧を見る', favorites_path %>
+</button>
+<td><%= link_to '新しく投稿する', new_blog_path %> <td>
+<td><%= link_to 'みんなの投稿', blogs_path %> </td>
+<div id ="footer_top">
+  <%= link_to "投稿一覧画面にもどる", blogs_path %>
+</div>

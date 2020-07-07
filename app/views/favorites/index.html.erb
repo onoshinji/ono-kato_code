@@ -1,0 +1,8 @@
+<% @favorites.each do |favorite| %>
+<br>
+<%= "#{favorite.blog.user.name}さんの投稿" %>
+<br>
+<%= "#{favorite.blog.title}" %>
+<%= "#{favorite.blog.content}" %>
+<%= "#{favorite.blog.created_at}" %>
+<% end %>
